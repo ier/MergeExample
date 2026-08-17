@@ -19,4 +19,19 @@ public class MergeExampleTest1
         // Assert
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void Basic_Intersections_ReturnsMerged()
+    {
+        // Arange
+        var a = new List<int> {1, 10, 20};
+        var b = new List<int> {5, 6, 30};
+        var expected = new List<int> {1, 5, 6, 10, 20, 30};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
 }
