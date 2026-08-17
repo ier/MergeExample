@@ -6,7 +6,7 @@ using MergeExample;
 public class MergeExampleTest1
 {
     [Fact]
-    public void Test1()
+    public void Basic_NoIntersections_ReturnsMerged()
     {
         // Arange
         var a = new List<int> {1, 2, 3, 4, 4};
