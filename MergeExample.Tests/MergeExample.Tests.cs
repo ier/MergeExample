@@ -34,4 +34,19 @@ public class MergeExampleTest1
         // Assert
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void More_Intersections_ReturnsMerged()
+    {
+        // Arange
+        var a = new List<int> {1, 4, 5};
+        var b = new List<int> {2, 3, 6};
+        var expected = new List<int> {1, 2, 3, 4, 5, 6};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
 }
