@@ -49,4 +49,49 @@ public class MergeExampleTest1
         // Assert
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void Empty_SecondPart_ReturnsMerged()
+    {
+        // Arange
+        var a = new List<int> {1, 4, 5};
+        var b = new List<int> {};
+        var expected = new List<int> {1, 4, 5};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Empty_FirstPart_ReturnsMerged()
+    {
+        // Arange
+        var a = new List<int> {};
+        var b = new List<int> {1, 4, 5};
+        var expected = new List<int> {1, 4, 5};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Both_Empty_ReturnsEmpty()
+    {
+        // Arange
+        var a = new List<int> {};
+        var b = new List<int> {};
+        var expected = new List<int> {};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
 }
