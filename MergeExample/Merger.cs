@@ -9,6 +9,7 @@ public class Merger
         if (a == null) throw new ArgumentNullException(nameof(a));
         if (b == null) throw new ArgumentNullException(nameof(b));
         if (a.Count == 0) return b;
+        if (b.Count == 0) return a;
 
         var head = new List<int>();
         var tail = new List<int>();
