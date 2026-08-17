@@ -51,11 +51,11 @@ public class MergeExampleTest1
     }
 
     [Fact]
-    public void Empty_SecondPart_ReturnsMerged()
+    public void Empty_FirstPart_ReturnsMerged()
     {
         // Arange
-        var a = new List<int> {1, 4, 5};
-        var b = new List<int> {};
+        var a = new List<int> {};
+        var b = new List<int> {1, 4, 5};
         var expected = new List<int> {1, 4, 5};
 
         // Act
@@ -66,11 +66,11 @@ public class MergeExampleTest1
     }
 
     [Fact]
-    public void Empty_FirstPart_ReturnsMerged()
+    public void Empty_SecondPart_ReturnsMerged()
     {
         // Arange
-        var a = new List<int> {};
-        var b = new List<int> {1, 4, 5};
+        var a = new List<int> {1, 4, 5};
+        var b = new List<int> {};
         var expected = new List<int> {1, 4, 5};
 
         // Act
@@ -87,6 +87,21 @@ public class MergeExampleTest1
         var a = new List<int> {};
         var b = new List<int> {};
         var expected = new List<int> {};
+
+        // Act
+        var result = Merger.MergeArrays(a, b);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Jagged_Arrays_ReturnsMerges()
+    {
+        // Arange
+        var a = new List<int> {1, 100};
+        var b = new List<int> {2, 3, 4};
+        var expected = new List<int> {1, 2, 3, 4, 100};
 
         // Act
         var result = Merger.MergeArrays(a, b);

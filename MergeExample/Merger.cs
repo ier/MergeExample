@@ -6,44 +6,28 @@ public class Merger
 {
     public static List<int> MergeArrays(List<int> a, List<int> b)
     {
+        // The Guards
         if (a == null) throw new ArgumentNullException(nameof(a));
         if (b == null) throw new ArgumentNullException(nameof(b));
         if (a.Count == 0) return b;
         if (b.Count == 0) return a;
 
-        var head = new List<int>();
-        var tail = new List<int>();
-        var border = a.Last();
-        var maxLen = Math.Max(a.Count, b.Count);
-        var counter = 0;
+        var result = new List<int>(a.Count + b.Count);
+        int i = 0, j = 0;
 
-        while (counter < maxLen)
+        // Main part processing cycle
+        while (i < a.Count && j < b.Count)
         {
-            if (counter < a.Count && counter < b.Count)
-            {
-                var min = Math.Min(a[counter], b[counter]);
-                var max = Math.Max(a[counter], b[counter]);
-
-                head.Add(min);
-
-                if (max > border)
-                    tail.Add(max);
-                else
-                    head.Add(max);
-            }
-            else if (counter >= a.Count)
-            {
-                tail.Add(b[counter]);
-            }
-            else if (counter >= b.Count)
-            {
-                head.Add(a[counter]);
-            }
-
-            counter++;
+            if (a[i] <= b[j])
+                result.Add(a[i++]);
+            else
+                result.Add(b[j++]);
         }
 
-        head.AddRange(tail);
-        return head;
+        // Adding the rest elements
+        while (i < a.Count) result.Add(a[i++]);
+        while (j < b.Count) result.Add(b[j++]);
+
+        return result;
     }
 }
